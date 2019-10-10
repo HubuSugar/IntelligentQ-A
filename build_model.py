@@ -70,7 +70,7 @@ def decoding_layer(dec_embed_input, embeddings, enc_output, enc_state, vocab_siz
             dec_cell = tf.nn.rnn_cell.DropoutWrapper(lstm_cell, input_keep_prob=keep_prob)
     # 全连接层
     output_layer = Dense(vocab_size, kernel_initializer=tf.truncated_normal_initializer(mean=0.0, stddev=0.1))
-
+    # 使用BahanuaAttention注意力
     attn_mech = seq.BahdanauAttention(rnn_size,
                                       enc_output,
                                       text_length,
